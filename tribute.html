@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Tribute to Miss Thelma Dike</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0A0A0A;
+      --black-2:  #111111;
+      --black-3:  #1A1A1A;
+      --black-4:  #222222;
+      --white:    #FFFFFF;
+      --magenta:  #FF2D78;
+      --teal:     #00D4C8;
+      --amber:    #FFB930;
+      --violet:   #8B5CF6;
+      --magenta-dim: rgba(255,45,120,0.12);
+      --teal-dim:    rgba(0,212,200,0.12);
+      --amber-dim:   rgba(255,185,48,0.12);
+      --radius: 16px;
+      --shadow: 0 8px 48px rgba(0,0,0,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+
+    /* NAV */
+    nav {
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--magenta);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 14px;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--white);
+    }
+
+    .nav-wordmark span { color: var(--magenta); }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+
+    .nav-links a {
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 100px 0 80px;
+    }
+
+    .hero-bg-letter {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Fraunces', serif;
+      font-size: clamp(280px, 33vw, 480px);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.035);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(255,45,120,0.22), transparent);
+      top: -120px; left: -120px;
+    }
+
+    .orb-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(0,212,200,0.16), transparent);
+      bottom: -80px; right: 180px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,45,120,0.12);
+      border: 1px solid rgba(255,45,120,0.3);
+      color: var(--magenta);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 8px 16px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before { content: '✦'; font-size: 9px; }
+
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(13px, 1.4vw, 17px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(42px, 5.5vw, 74px);
+      font-weight: 900; line-height: 1.06;
+      color: var(--white); margin-bottom: 28px;
+    }
+
+    .hero-headline .line-accent {
+      display: block; font-style: italic;
+      color: transparent;
+      background: linear-gradient(90deg, var(--magenta), var(--amber));
+      -webkit-background-clip: text; background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px; color: rgba(255,255,255,0.48);
+      margin-bottom: 48px; font-weight: 400;
+      max-width: 460px; line-height: 1.75;
+    }
+
+    .hero-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+    .btn-glow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--magenta), #FF6B9D);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 36px; border-radius: 100px;
+      border: none; cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 0 30px rgba(255,45,120,0.4);
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 60px rgba(255,45,120,0.65);
+    }
+
+    .btn-glow::after { content: '→'; font-size: 16px; }
+
+    .hero-caption {
+      font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 400;
+    }
+
+    /* Profile card */
+    .profile-card-inner {
+      background: var(--black-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow), 0 0 0 1px rgba(255,45,120,0.08);
+    }
+
+    .profile-img-zone {
+      width: 100%; height: 360px;
+      background: linear-gradient(145deg, #181818 0%, #0d0d0d 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      position: relative; overflow: hidden;
+    }
+
+    .profile-img-zone::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(255,45,120,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(0,212,200,0.12) 0%, transparent 50%);
+    }
+
+    .profile-ring {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--magenta), var(--violet));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+
+    .profile-ring::before {
+      content: '';
+      position: absolute; inset: -3px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--magenta), var(--teal), var(--amber));
+      z-index: -1;
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .profile-ring svg {
+      width: 38px; height: 38px;
+      stroke: white; fill: none; stroke-width: 1.5;
+      position: relative; z-index: 1;
+    }
+
+    .p-name {
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-weight: 700; color: var(--white);
+      position: relative; z-index: 1; text-align: center;
+    }
+
+    .p-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--magenta);
+      position: relative; z-index: 1;
+    }
+
+    .profile-footer {
+      padding: 20px 28px;
+      display: flex; justify-content: center; gap: 40px; align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pstat { text-align: center; }
+
+    .pstat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 700; color: var(--amber);
+    }
+
+    .pstat-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .pdiv { width: 1px; height: 32px; background: rgba(255,255,255,0.07); }
+
+    /* SECTION SHARED */
+    section { padding: 96px 0; }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .chip-m { background: var(--magenta-dim); color: var(--magenta); border: 1px solid rgba(255,45,120,0.25); }
+    .chip-t { background: var(--teal-dim);    color: var(--teal);    border: 1px solid rgba(0,212,200,0.25); }
+    .chip-a { background: var(--amber-dim);   color: var(--amber);   border: 1px solid rgba(255,185,48,0.25); }
+
+    .sec-heading {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 900; line-height: 1.1;
+      color: var(--white); margin-bottom: 48px;
+    }
+
+    .am { color: var(--magenta); }
+    .at { color: var(--teal); }
+    .aa { color: var(--amber); }
+
+    /* ABOUT */
+    #about { background: var(--black-2); border-top: 1px solid rgba(255,255,255,0.04); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .about-sidebar { position: sticky; top: 88px; } /* resets to static at ≤960px */
+
+    .about-tags { margin-top: 36px; }
+
+    .about-tag { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .about-tag:last-child { border-bottom: none; }
+
+    .atag-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.22); margin-bottom: 5px;
+    }
+
+    .atag-val { font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 400; line-height: 1.5; }
+
+    .about-body p {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      line-height: 1.9; margin-bottom: 22px; font-weight: 400;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body strong { color: var(--white); font-weight: 700; }
+
+    .about-pull {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(255,45,120,0.07), rgba(0,212,200,0.05));
+      border: 1px solid rgba(255,45,120,0.18);
+      border-radius: var(--radius);
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-style: italic;
+      color: rgba(255,255,255,0.75); line-height: 1.6;
+      position: relative;
+    }
+
+    .about-pull::before {
+      content: '"';
+      position: absolute; top: -18px; left: 24px;
+      font-size: 80px; color: var(--magenta);
+      opacity: 0.35; line-height: 1; font-style: normal;
+    }
+
+    /* IMPACT */
+    #impact { background: var(--black); }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .icard {
+      background: var(--black-3);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .icard-top { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .it-m { background: linear-gradient(90deg, var(--magenta), rgba(255,45,120,0.2)); }
+    .it-t { background: linear-gradient(90deg, var(--teal), rgba(0,212,200,0.2)); }
+    .it-a { background: linear-gradient(90deg, var(--amber), rgba(255,185,48,0.2)); }
+
+    .icard::after {
+      content: '';
+      position: absolute; inset: 0; opacity: 0;
+      transition: opacity 0.3s; border-radius: var(--radius);
+      pointer-events: none;
+    }
+
+    .ic-m::after { background: radial-gradient(ellipse at top, rgba(255,45,120,0.07), transparent 60%); }
+    .ic-t::after { background: radial-gradient(ellipse at top, rgba(0,212,200,0.07), transparent 60%); }
+    .ic-a::after { background: radial-gradient(ellipse at top, rgba(255,185,48,0.07), transparent 60%); }
+
+    .icard:hover { transform: translateY(-8px); }
+    .icard:hover::after { opacity: 1; }
+    .ic-m:hover { box-shadow: 0 20px 60px rgba(255,45,120,0.18); }
+    .ic-t:hover { box-shadow: 0 20px 60px rgba(0,212,200,0.18); }
+    .ic-a:hover { box-shadow: 0 20px 60px rgba(255,185,48,0.18); }
+
+    .icard-num {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      margin-bottom: 20px; margin-top: 8px;
+    }
+
+    .in-m { color: var(--magenta); }
+    .in-t { color: var(--teal); }
+    .in-a { color: var(--amber); }
+
+    .icard h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 28px; font-weight: 900; color: var(--white);
+      margin-bottom: 14px; position: relative; z-index: 1;
+    }
+
+    .icard p {
+      font-size: 14px; color: rgba(255,255,255,0.48);
+      line-height: 1.8; position: relative; z-index: 1;
+    }
+
+    /* LESSONS */
+    #lessons { background: var(--black-2); }
+
+    .lessons-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end; margin-bottom: 56px;
+    }
+
+    .lessons-desc { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .lcard {
+      background: var(--black-4);
+      border-radius: var(--radius);
+      padding: 44px 36px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .lcard:hover { transform: translateY(-6px); }
+    .lc-m:hover { box-shadow: 0 20px 60px rgba(255,45,120,0.12); border-color: rgba(255,45,120,0.25); }
+    .lc-t:hover { box-shadow: 0 20px 60px rgba(0,212,200,0.12); border-color: rgba(0,212,200,0.25); }
+    .lc-a:hover { box-shadow: 0 20px 60px rgba(255,185,48,0.12); border-color: rgba(255,185,48,0.25); }
+
+    .lcard-bar { width: 40px; height: 3px; border-radius: 3px; margin-bottom: 24px; }
+    .lb-m { background: linear-gradient(90deg, var(--magenta), transparent); }
+    .lb-t { background: linear-gradient(90deg, var(--teal), transparent); }
+    .lb-a { background: linear-gradient(90deg, var(--amber), transparent); }
+
+    .lcard-num {
+      font-family: 'Fraunces', serif;
+      font-size: 52px; font-weight: 900;
+      line-height: 1; margin-bottom: 18px; opacity: 0.14;
+    }
+
+    .ln-m { color: var(--magenta); }
+    .ln-t { color: var(--teal); }
+    .ln-a { color: var(--amber); }
+
+    .lcard h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 21px; font-weight: 700; color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .lcard p { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.8; }
+
+    /* CLOSING */
+    #closing { padding: 80px 0; }
+
+    .closing-wrap {
+      background: linear-gradient(145deg, #0f0f0f, #181818);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 96px 72px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .closing-wrap::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--magenta), var(--teal), var(--amber), var(--violet));
+      border-radius: 28px 28px 0 0;
+    }
+
+    .corb-1 {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,45,120,0.08), transparent 60%);
+      top: -200px; left: -200px; pointer-events: none;
+    }
+
+    .corb-2 {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,200,0.07), transparent 60%);
+      bottom: -150px; right: -100px; pointer-events: none;
+    }
+
+    .closing-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,185,48,0.1); border: 1px solid rgba(255,185,48,0.25);
+      color: var(--amber); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 100px; margin-bottom: 32px;
+    }
+
+    .closing-chip::before { content: '♡'; }
+
+    .closing-h {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(26px, 3.8vw, 50px);
+      font-weight: 900; color: var(--white);
+      line-height: 1.2; max-width: 720px; margin: 0 auto 40px;
+      position: relative; z-index: 1;
+    }
+
+    .closing-h .grad {
+      background: linear-gradient(90deg, var(--magenta), var(--amber));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; font-style: italic;
+    }
+
+    .closing-body {
+      max-width: 580px; margin: 0 auto 56px;
+      position: relative; z-index: 1;
+    }
+
+    .closing-body p {
+      font-size: 16px; color: rgba(255,255,255,0.48);
+      line-height: 1.85; margin-bottom: 16px;
+    }
+
+    .closing-body p:last-child { margin-bottom: 0; }
+
+    .closing-sig {
+      position: relative; z-index: 1;
+      display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 28px 48px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .sig-name {
+      font-family: 'Fraunces', serif;
+      font-size: 26px; font-style: italic; color: var(--amber);
+    }
+
+    .sig-sub {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+    }
+
+    footer p { font-size: 12px; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fd1 { transition-delay: 0.05s; }
+    .fd2 { transition-delay: 0.15s; }
+    .fd3 { transition-delay: 0.25s; }
+
+    /* RESPONSIVE — TABLET (≤960px) */
+    @media (max-width: 960px) {
+      /* Hero */
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-bg-letter { display: none; }
+      .hero { padding: 80px 0 64px; min-height: auto; overflow: hidden; }
+      /* Centre and cap the profile card when stacked */
+      .profile-card-inner { max-width: 420px; margin: 0 auto; }
+
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-sidebar { position: static; top: auto; }
+
+      /* Impact / Lessons */
+      .impact-grid { grid-template-columns: 1fr; }
+      .lessons-grid { grid-template-columns: 1fr; }
+      .lessons-top { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Closing */
+      .closing-wrap { padding: 64px 32px; }
+      .closing-h { font-size: clamp(22px, 4vw, 38px); }
+
+      /* Nav */
+      .nav-links { display: none; }
+
+      /* Card stack */
+      .card-section { top: 58px; border-radius: 16px 16px 0 0; }
+      .stack-dots { display: none; }
+    }
+
+    /* RESPONSIVE — MOBILE (≤600px) */
+    @media (max-width: 600px) {
+      /* Base */
+      .container { padding: 0 18px; }
+      section { padding: 56px 0; }
+
+      /* Hero */
+      .hero { padding: 60px 0 48px; }
+      .hero-headline { font-size: clamp(34px, 10vw, 48px); }
+      .hero-badge { font-size: 10px; padding: 7px 13px; }
+      .hero-sub { font-size: 14px; margin-bottom: 32px; }
+      .btn-glow { padding: 15px 24px; font-size: 12px; }
+      .hero-caption { font-size: 11px; }
+
+      /* Profile card */
+      .profile-img-zone { height: 280px; }
+      .profile-footer { padding: 16px 20px; gap: 24px; }
+      .pstat-num { font-size: 18px; }
+      .pstat-label { font-size: 9px; }
+
+      /* Section headings */
+      .sec-heading { font-size: clamp(26px, 8vw, 36px); margin-bottom: 32px; }
+      .chip { font-size: 10px; padding: 5px 12px; }
+
+      /* About */
+      .about-tags { margin-top: 24px; }
+      .about-body p { font-size: 14px; }
+      .about-pull { font-size: 15px; padding: 20px 22px; }
+
+      /* Impact cards */
+      .icard { padding: 28px 22px; }
+      .icard h3 { font-size: 22px; }
+      .icard p { font-size: 13px; }
+
+      /* Lesson cards */
+      .lcard { padding: 32px 24px; }
+      .lcard h3 { font-size: 18px; }
+      .lcard p { font-size: 13px; }
+      .lcard-num { font-size: 40px; }
+      .lessons-top { margin-bottom: 36px; }
+      .lessons-desc { font-size: 13px; }
+
+      /* Closing */
+      .closing-wrap { padding: 52px 22px; border-radius: 16px; }
+      .closing-h { font-size: clamp(20px, 7vw, 30px); }
+      .closing-body p { font-size: 14px; }
+      .closing-sig { padding: 22px 32px; }
+      .sig-name { font-size: 20px; }
+
+      /* Mentee photo circles in closing */
+      .closing-wrap [style*="width:120px"] {
+        width: 88px !important; height: 88px !important;
+      }
+
+      /* Music bar */
+      #music-bar {
+        bottom: 16px !important;
+        padding: 10px 16px !important;
+        gap: 10px !important;
+        max-width: calc(100vw - 32px);
+      }
+
+      /* Card stack */
+      .card-section { top: 52px; border-radius: 12px 12px 0 0; }
+    }
+
+    /* RESPONSIVE — SMALL MOBILE (≤400px) */
+    @media (max-width: 400px) {
+      .container { padding: 0 14px; }
+      .hero-headline { font-size: clamp(30px, 9vw, 40px); }
+      .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .impact-grid, .lessons-grid { gap: 14px; }
+      .icard { padding: 24px 18px; }
+      .lcard { padding: 26px 18px; }
+      .closing-wrap { padding: 44px 16px; }
+    }
+
+    /* ═══════════════════════════════════════
+       CARD STACK SCROLL EFFECT
+       Each .card-slot is a tall scroll container.
+       The .card-section inside it sticks at top,
+       showing its full content before the next
+       card slides over it.
+    ═══════════════════════════════════════ */
+
+    .stack-wrapper { position: relative; }
+
+    /* The outer slot gives the card scroll room equal to its own height,
+       so the card fully rests on screen before the next one arrives. */
+    .card-slot {
+      position: relative;
+    }
+
+    /* The actual visible card — sticks in place */
+    .card-section {
+      position: sticky;
+      top: 64px;
+      border-radius: 20px 20px 0 0;
+      overflow: hidden; /* clips the bg/rounded corners cleanly */
+      transform-origin: top center;
+      will-change: transform, filter;
+      box-shadow: 0 -4px 40px rgba(0,0,0,0.7);
+    }
+
+    /* Inner sections must NOT be clipped — they scroll within the slot */
+    .card-section section {
+      overflow: visible;
+    }
+
+    /* Hero has no sticky / no rounding — it IS the page start */
+    .card-slot-hero .card-section {
+      position: relative;
+      top: auto;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .card-hero    { background: var(--black);   z-index: 1; }
+    .card-about   { background: var(--black-2); z-index: 2; }
+    .card-impact  { background: var(--black);   z-index: 3; }
+    .card-lessons { background: var(--black-2); z-index: 4; }
+    .card-closing { background: var(--black);   z-index: 5; border-radius: 20px; }
+
+    /* Coloured top-edge stripe on each card */
+    .card-section:not(.card-hero)::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--magenta), var(--teal), var(--amber));
+      border-radius: 20px 20px 0 0;
+      z-index: 20;
+    }
+
+    /* ── Progress dots ── */
+    .stack-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .stack-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .stack-dot.active {
+      background: var(--magenta);
+      transform: scale(1.6);
+    }
+
+    @media (max-width: 768px) {
+      .card-section { top: 58px; }
+      .stack-dots { display: none; }
+    }
+
+    /* Mentee sig row wraps on narrow screens */
+    @media (max-width: 480px) {
+      .mentee-sig-row { gap: 24px !important; margin-top: 36px !important; }
+      .mentee-sig-row > div > div:first-child {
+        width: 80px !important; height: 80px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-logo">
+        <div class="nav-dot"></div>
+        <div class="nav-wordmark">Tribute to <span>Our Mentor</span></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#closing">Gratitude</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Side progress dots -->
+  <div class="stack-dots">
+    <div class="stack-dot active" data-index="0" onclick="scrollToCard(0)"></div>
+    <div class="stack-dot" data-index="1" onclick="scrollToCard(1)"></div>
+    <div class="stack-dot" data-index="2" onclick="scrollToCard(2)"></div>
+    <div class="stack-dot" data-index="3" onclick="scrollToCard(3)"></div>
+    <div class="stack-dot" data-index="4" onclick="scrollToCard(4)"></div>
+  </div>
+
+  <!-- CARD STACK WRAPPER -->
+  <div class="stack-wrapper">
+
+  <!-- HERO -->
+  <div class="card-slot card-slot-hero">
+  <div class="card-section card-hero"><section class="hero" style="min-height:100vh;">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-bg-letter">T</div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text fade-up">
+          <div class="hero-badge">She Code Africa · Mentorship Tribute</div>
+          <div class="hero-name">Thelma "Tee" Dike</div>
+          <h1 class="hero-headline">
+            Celebrating<br>the Mentor Who<br>
+            <span class="line-accent">Sparked Clarity.</span>
+          </h1>
+          <p class="hero-sub">
+            Senior Product Designer · Aspiring Tech Operator · Future Builder.<br>
+            A tribute from grateful mentees who carry your lessons forward.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#closing" class="btn-glow">Thank You for Building Futures</a>
+            <span class="hero-caption">Francisca &amp; Sarah · SCA 2024</span>
+          </div>
+        </div>
+        <div class="fade-up fd2">
+          <div class="profile-card-inner">
+            <div class="profile-img-zone" style="padding:0;">
+              <!-- ====================================================
+                   THELMA'S PHOTO
+                   Replace the src below with the path to her image.
+                   Example: src="images/thelma.jpg"
+                   ================================================== -->
+              <img
+                src="Thelma Dike.jpeg"
+                alt="Miss Thelma Dike"
+                style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <!-- Fallback shown if image path is not yet set -->
+              <div style="display:none; flex-direction:column; align-items:center; gap:12px; position:absolute; inset:0; justify-content:center; background:linear-gradient(145deg,#1a0a10,#0d0d0d);">
+                <div style="font-family:'Fraunces',serif; font-size:16px; color:rgba(255,255,255,0.3);">Miss Thelma Dike</div>
+                <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--magenta);">Add photo in VS Code</div>
+              </div>
+            </div>
+            <div class="profile-footer">
+              <div class="pstat">
+                <div class="pstat-num">8+</div>
+                <div class="pstat-label">Years in Tech</div>
+              </div>
+              <div class="pdiv"></div>
+              <div class="pstat">
+                <div class="pstat-num">∞</div>
+                <div class="pstat-label">Futures Built</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section></div><!-- /card-section -->
+  </div><!-- /card-slot-hero -->
+
+  <!-- ABOUT -->
+  <div class="card-slot">
+  <div class="card-section card-about"><section id="about" style="background:transparent;">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div class="about-sidebar">
+          <div class="chip chip-m">About</div>
+          <h2 class="sec-heading" style="margin-bottom:0;">The Woman<br>Behind the<br><span class="am">Guidance.</span></h2>
+          <div class="about-tags">
+            <div class="about-tag">
+              <div class="atag-label">Role</div>
+              <div class="atag-val">Senior Product Designer &amp; Aspiring Tech Operator</div>
+            </div>
+            <div class="about-tag">
+              <div class="atag-label">Industry</div>
+              <div class="atag-val">African Fintech · AI Education · R&D</div>
+            </div>
+            <div class="about-tag">
+              <div class="atag-label">Notable Work</div>
+              <div class="atag-val">Flutterwave · Chipper Cash · Apple · Verizon + Nvidia</div>
+            </div>
+            <div class="about-tag">
+              <div class="atag-label">Currently</div>
+              <div class="atag-val">Authoring a book on AI for Teenagers</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-body">
+          <p><strong>Thelma "Tee" Dike</strong> is a Senior Product Designer and aspiring Tech Operator known for solving complex problems in high-stakes environments — translating technical systems into intuitive experiences that drive growth and retention.</p>
+          <p>Her career spans <strong>Flutterwave</strong>, <strong>Chipper Cash</strong>, battery engineering at <strong>Apple</strong>, and AI infrastructure work with <strong>Verizon R&D + Nvidia</strong>. Today she teaches AI in secondary schools and is writing a book on AI for teenagers — building not just products, but futures.</p>
+          <div class="about-pull" style="margin-top:28px;">
+            "From craft-focused design to operational leadership — a shift that defines her legacy."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section></div><!-- /card-section -->
+  </div><!-- /card-slot -->
+
+  <!-- IMPACT -->
+  <div class="card-slot">
+  <div class="card-section card-impact"><section id="impact" style="background:transparent;">
+    <div class="container">
+      <div class="fade-up">
+        <div class="chip chip-t">Impact</div>
+        <h2 class="sec-heading">The Impact of<br>Your <span class="at">Guidance.</span></h2>
+      </div>
+      <div class="impact-grid">
+        <div class="icard ic-m fade-up fd1">
+          <div class="icard-top it-m"></div>
+          <div class="icard-num in-m">01 · Clarity</div>
+          <h3>Clarity</h3>
+          <p>Before this mentorship, I had ambition. Through you, I gained direction. You helped me see beyond tasks and into systems — beyond design and into strategy.</p>
+        </div>
+        <div class="icard ic-t fade-up fd2">
+          <div class="icard-top it-t"></div>
+          <div class="icard-num in-t">02 · Direction</div>
+          <h3>Direction</h3>
+          <p>You challenged how I think, how I approach problems, and how I position myself in tech. You didn't just teach skills — you modeled leadership.</p>
+        </div>
+        <div class="icard ic-a fade-up fd3">
+          <div class="icard-top it-a"></div>
+          <div class="icard-num in-a">03 · Confidence</div>
+          <h3>Confidence</h3>
+          <p>Your guidance gave me the boldness to own my growth. To step into rooms knowing I belong. To design not just for screens, but for impact.</p>
+        </div>
+      </div>
+    </div>
+  </section></div><!-- /card-section -->
+  </div><!-- /card-slot -->
+
+  <!-- LESSONS -->
+  <div class="card-slot">
+  <div class="card-section card-lessons"><section id="lessons" style="background:transparent;">
+    <div class="container">
+      <div class="lessons-top fade-up">
+        <div>
+          <div class="chip chip-a">Lessons I Carry Forward</div>
+          <h2 class="sec-heading" style="margin-bottom:0;">Wisdom That<br>Will Travel <span class="aa">Far.</span></h2>
+        </div>
+        <div class="lessons-desc">
+          These aren't just lessons learned — they are a compass. A way of moving through the world, through careers, through challenges. You gave us a framework for how to live and lead.
+        </div>
+      </div>
+      <div class="lessons-grid">
+        <div class="lcard lc-m fade-up fd1">
+          <div class="lcard-bar lb-m"></div>
+          <div class="lcard-num ln-m">01</div>
+          <h3>Think Like a Builder</h3>
+          <p>Every product is a system. Every decision ripples outward. Approach design not as decoration, but as construction — laying foundations for something that lasts beyond you.</p>
+        </div>
+        <div class="lcard lc-t fade-up fd2">
+          <div class="lcard-bar lb-t"></div>
+          <div class="lcard-num ln-t">02</div>
+          <h3>Design With Intention</h3>
+          <p>There is no neutral choice in design. Each element communicates, guides, and shapes experience. Choose with purpose — every pixel, every word, every interaction carries meaning.</p>
+        </div>
+        <div class="lcard lc-a fade-up fd3">
+          <div class="lcard-bar lb-a"></div>
+          <div class="lcard-num ln-a">03</div>
+          <h3>Lead With Courage</h3>
+          <p>Leadership is not a title — it is a posture. Speak up, take up space, and bring others with you. True impact multiplies when shared generously with the next generation.</p>
+        </div>
+      </div>
+    </div>
+  </section></div><!-- /card-section -->
+  </div><!-- /card-slot -->
+
+  <!-- CLOSING -->
+  <div class="card-slot">
+  <div class="card-section card-closing"><section id="closing" style="background:transparent;">
+    <div class="container">
+      <div class="closing-wrap fade-up">
+        <div class="corb-1"></div>
+        <div class="corb-2"></div>
+        <div class="closing-chip">With Gratitude</div>
+        <h2 class="closing-h">
+          Thank you for your patience,<br>your structure, and your<br>
+          <span class="grad">standard of excellence.</span>
+        </h2>
+        <div class="closing-body">
+          <p>Your mentorship at She Code Africa did more than improve our skills — it reshaped our thinking.</p>
+          <p>Thank you for your honesty and your unwavering belief in what we could become. You saw something in us before we fully saw it in ourselves.</p>
+          <p>We carry your lessons forward, not just as designers, but as future builders.</p>
+        </div>
+        <div class="closing-sig">
+          <div class="sig-name">Francisca &amp; Sarah</div>
+          <div class="sig-sub">She Code Africa · 2026 Cohort</div>
+        </div>
+
+        <!-- Mentee photos sit directly below the signature -->
+        <div class="mentee-sig-row" style="display:flex; justify-content:center; gap:40px; margin-top:48px; flex-wrap:wrap;">
+
+          <!-- ================================================
+               SARAH'S PHOTO
+               Replace src with your image path, e.g. src="images/sarah.jpg"
+               ================================================ -->
+          <!-- <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+            <div style="width:120px; height:120px; border-radius:50%; overflow:hidden; border:2px solid var(--magenta); box-shadow:0 0 24px rgba(255,45,120,0.3);">
+              <img
+                src="Fransica.jpeg"
+                alt="Francisca"
+                style="width:100%; height:100%; object-fit:cover; object-position:center top;"
+                onerror="this.parentElement.style.background='#1a0a10'; this.style.display='none';"
+              />
+            </div>
+            <div style="font-family:'Fraunces',serif; font-size:16px; font-weight:700; color:var(--white);">Sarah</div>
+            <div style="font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--magenta);">Mentee · SCA 2024</div>
+          </div> -->
+
+          <!-- ================================================
+               FRANCISCA'S PHOTO
+               Replace src with her image path, e.g. src="images/francisca.jpg"
+               ================================================ -->
+          <!-- <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+            <div style="width:120px; height:120px; border-radius:50%; overflow:hidden; border:2px solid var(--teal); box-shadow:0 0 24px rgba(0,212,200,0.3);">
+              <img
+                src="Sarah.png"
+                alt="Sarah"
+                style="width:100%; height:100%; object-fit:cover; object-position:center top;"
+                onerror="this.parentElement.style.background='#091a1a'; this.style.display='none';"
+              />
+            </div>
+            <div style="font-family:'Fraunces',serif; font-size:16px; font-weight:700; color:var(--white);">Francisca</div>
+            <div style="font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal);">Mentee · SCA 2024</div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </section></div><!-- /card-section -->
+  </div><!-- /card-slot -->
+
+  </div><!-- /stack-wrapper -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Crafted with care and gratitude · She Code Africa · 2026</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SONG AUDIO PLAYER
+       Replace the src below with the path to your MP3 file.
+       Example: src="music/your-song.mp3"
+       The song will begin playing automatically when someone
+       arrives from the landing page.
+       ============================================================ -->
+  <audio id="tribute-audio" loop>
+    <source src="Gratitude.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Floating music bar (bottom of screen) -->
+  <div id="music-bar" style="
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(15,15,15,0.9); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 20px; border-radius: 100px;
+    z-index: 9000; opacity: 0;
+    transition: opacity 0.6s ease 1.2s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  ">
+    <button id="music-toggle" onclick="toggleMusic()" style="
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #FF2D78, #c0005a);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.2s;
+    ">
+      <svg id="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg id="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="white" style="display:none; margin-left:2px;"><polygon points="5,3 19,12 5,21"/></svg>
+    </button>
+    <!-- Animated equaliser bars -->
+    <div id="eq-bars" style="display:flex; align-items:flex-end; gap:3px; height:18px;">
+      <div class="eq-bar" style="--d:0s"></div>
+      <div class="eq-bar" style="--d:0.15s"></div>
+      <div class="eq-bar" style="--d:0.3s"></div>
+      <div class="eq-bar" style="--d:0.1s"></div>
+      <div class="eq-bar" style="--d:0.25s"></div>
+    </div>
+    <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; color:rgba(255,255,255,0.45); white-space:nowrap;">Now Playing</span>
+  </div>
+
+  <style>
+    .eq-bar {
+      width: 3px; border-radius: 2px;
+      background: linear-gradient(to top, #FF2D78, #FFB930);
+      animation: eq-bounce 0.8s ease-in-out var(--d) infinite alternate;
+    }
+    @keyframes eq-bounce {
+      0%   { height: 4px; }
+      100% { height: 16px; }
+    }
+    .eq-bar.paused { animation-play-state: paused; height: 4px !important; }
+  </style>
+
+  <script>
+    // ── Autoplay song if arrived from landing page ────────
+    const audio = document.getElementById('tribute-audio');
+    const bar   = document.getElementById('music-bar');
+
+    if (document.referrer.includes('index.html') || sessionStorage.getItem('playTribute') === 'yes') {
+      sessionStorage.removeItem('playTribute');
+      window.addEventListener('load', () => {
+        audio.play().then(() => {
+          bar.style.opacity = '1';
+        }).catch(() => {});
+      });
+    }
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        document.getElementById('icon-pause').style.display = 'block';
+        document.getElementById('icon-play').style.display  = 'none';
+        document.querySelectorAll('.eq-bar').forEach(b => b.classList.remove('paused'));
+      } else {
+        audio.pause();
+        document.getElementById('icon-pause').style.display = 'none';
+        document.getElementById('icon-play').style.display  = 'block';
+        document.querySelectorAll('.eq-bar').forEach(b => b.classList.add('paused'));
+      }
+    }
+
+    // Show bar once audio starts playing
+    audio.addEventListener('play', () => { bar.style.opacity = '1'; });
+
+    // ── Fade-up ───────────────────────────────────────────
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // ── Card Stack ────────────────────────────────────────
+    const cards = document.querySelectorAll('.card-section');
+    const slots = document.querySelectorAll('.card-slot');
+    const dots  = document.querySelectorAll('.stack-dot');
+
+    function setSlotsHeight() {
+      // Temporarily make all fade-up children visible so scrollHeight is accurate
+      document.querySelectorAll('.fade-up').forEach(el => {
+        el.style.opacity  = '1';
+        el.style.transform = 'none';
+      });
+
+      slots.forEach((slot) => {
+        if (slot.classList.contains('card-slot-hero')) {
+          slot.style.height = ''; // natural height for hero
+          return;
+        }
+        const card = slot.querySelector('.card-section');
+        if (!card) return;
+        slot.style.height = ''; // reset first so scrollHeight is real
+        const cardH = card.scrollHeight;
+        // slot height = full card content + one full viewport of scroll room
+        // so the card sits completely in view before next one slides over it
+        slot.style.height = (cardH + window.innerHeight) + 'px';
+      });
+
+      // Restore fade-up state (already-visible ones keep their class)
+      document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+        el.style.opacity  = '';
+        el.style.transform = '';
+      });
+    }
+
+    // ── Scale & dim cards as they get buried ─────────────
+    function updateStack() {
+      const navH = 64;
+
+      cards.forEach((card, i) => {
+        const rect  = card.getBoundingClientRect();
+        const cardH = card.scrollHeight;
+
+        // overlap: 0 when card top is at navH, 1 when next card is fully over it
+        const overlap = Math.max(0, Math.min(1, (navH - rect.top) / Math.max(cardH * 0.35, 1)));
+
+        card.style.transform = `scale(${(1 - overlap * 0.05).toFixed(4)})`;
+        card.style.filter    = `brightness(${(1 - overlap * 0.22).toFixed(4)})`;
+
+        // Active dot
+        if (rect.top <= navH + 40 && rect.bottom > navH + 40) {
+          dots.forEach((d, di) => d.classList.toggle('active', di === i));
+        }
+      });
+    }
+
+    function scrollToCard(index) {
+      const slot = slots[index];
+      if (!slot) return;
+      window.scrollTo({ top: slot.offsetTop, behavior: 'smooth' });
+    }
+
+    // Run AFTER everything (fonts, images) is fully loaded
+    window.addEventListener('load', () => {
+      setSlotsHeight();
+      updateStack();
+    });
+
+    // Also run on scroll and resize
+    window.addEventListener('scroll', updateStack, { passive: true });
+    window.addEventListener('resize', () => {
+      setSlotsHeight();
+      updateStack();
+    });
+  </script>
+
+</body>
+</html>
